@@ -43,6 +43,11 @@ The examples in the **examples/** do not depend on any specific backend. They ma
 #### CrowdCurio
 To view the curio versions of these files, take a look at **curio_original/audio.html** and **curio_original/main.js**. **main.js** loads and submits the task data. It contains both the GET and POST API calls. All the other JS files can be found in **static/js/**. They are not dependent on the curio system and have not been changed
 
+#### ODE specifics
+If you have FeatureService running on localhost:7231 with default test data, you can test this integration with:
+1. In the audio-annotator/ directory run `python3 -m http.server`
+2. Visit <http://localhost:8000/examples/ode.html> in your browser
+
 ### Files
 * [**examples/**](examples/)
    * [index.html](examples/index.html)  

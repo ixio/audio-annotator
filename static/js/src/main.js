@@ -199,8 +199,16 @@ Annotator.prototype = {
     // Update the interface with the next task's data
     loadNextTask: function() {
         var my = this;
-        $.getJSON(dataUrl)
-        .done(function(data) {
+        $.ajax({
+            url: dataUrl,
+            type: 'GET',
+            beforeSend: (xhr) => {
+                if (typeof odeToken !== 'undefined') {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + odeToken);
+                }
+            }
+        })
+        .done(data => {
             my.currentTask = data.task;
             my.update();
         });
@@ -249,9 +257,14 @@ Annotator.prototype = {
         var my = this;
         $.ajax({
             type: 'POST',
-            url: $.getJSON(postUrl),
+            url: postUrl,
             contentType: 'application/json',
-            data: JSON.stringify(content)
+            data: JSON.stringify(content),
+            beforeSend: (xhr) => {
+                if (typeof odeToken !== 'undefined') {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + odeToken);
+                }
+            }
         })
         .done(function(data) {
             // If the last task had a hiddenImage component, remove it

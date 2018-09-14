@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Annotator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/audio-annotator.css">
+
+    <script type="text/javascript" src="/static/js/lib/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/materialize.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/wavesurfer.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/wavesurfer.spectrogram.min.js"></script>
+    <script type="text/javascript" src="/static/js/colormap/colormap.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/src/message.js"></script>
+    <script type="text/javascript" src="/static/js/src/wavesurfer.regions.js"></script>
+    <script type="text/javascript" src="/static/js/src/wavesurfer.drawer.extended.js"></script>
+    <script type="text/javascript" src="/static/js/src/wavesurfer.labels.js"></script>
+    <script type="text/javascript" src="/static/js/src/hidden_image.js"></script>
+    <script type="text/javascript" src="/static/js/src/components.js"></script>
+    <script type="text/javascript" src="/static/js/src/annotation_stages.js"></script>
+</head>
+<body>
+    <div class="annotation">
+        <div class="labels"></div>
+        <div class="audio_visual"></div>
+        <div class="play_bar"></div>
+        <div class="hidden_img"></div>
+        <div class="creation_stage_container"></div>
+        <div class="submit_container"></div>
+    </div>
+    <script>
+        var rootUrl = 'http://localhost:7231/data.ode.org/v1';
+        var dataUrl = rootUrl + '/annotation-task/1';
+        var postUrl = rootUrl + '/annotation-task/1/update_results';
+        var odeToken;
+        // Example token retrieval for FeatureService with test seed data
+        $.post(rootUrl + '/authentication/authenticate', { username: 'ek@test.ode', password: 'password' }, res => {
+            odeToken = res.token;
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '/static/js/src/main.js';
+            script.async = false;
+            script.defer = true;
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
