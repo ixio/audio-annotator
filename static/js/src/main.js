@@ -271,6 +271,17 @@ Annotator.prototype = {
             if (my.currentTask.feedback === 'hiddenImage') {
                 my.hiddenImage.remove();
             }
+            if (typeof odeToken !== 'undefined') {
+                if (data.next_task === null) {
+                    window.location.href = '/annotation_tasks/' + data.campaign_id;
+                } else {
+                    let prevTask = dataUrl.split('/').pop();
+                    const lastReplace = (str, expr, repl) => str.replace(new RegExp('(.*)' + expr), '$1' + repl);
+                    dataUrl = lastReplace(dataUrl, prevTask, data.next_task);
+                    postUrl = lastReplace(postUrl, prevTask, data.next_task);
+                    history.pushState({}, null, data.next_task);
+                }
+            }
             my.loadNextTask();
         })
         .fail(function() {
