@@ -168,7 +168,7 @@ WaveSurfer.util.extend(WaveSurfer.Drawer, {
             if (this.params.spectroUrl) {
                 var img = new Image();
                 img.onload = () => {
-                    this.waveCc.drawImage(img, 0, 0);
+                    this.waveCc.drawImage(img, 0, 0, img.width, img.height, 0, 0, this.width, this.height);
                 }
                 img.src = this.params.spectroUrl;
             } else {
