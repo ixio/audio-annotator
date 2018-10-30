@@ -9,16 +9,15 @@
 
 var Util = {
     // Convert seconds to timestamp string
-    secondsToString: function(seconds) {
-        if (seconds === null) {
+    secondsToString: function(totalSeconds) {
+        const padToTwo = number => number < 10 ? ('0' + number) : number;
+        if (totalSeconds === null) {
             return '';
         }
-        var timeStr = '00:';
-        if (seconds >= 10) {
-            timeStr += seconds.toFixed(3);
-        } else {
-            timeStr += '0' + seconds.toFixed(3);
-        }
+        let hours = Math.floor(totalSeconds / 3600);
+        let minutes = Math.floor((totalSeconds % 3600) / 60);
+        let seconds = (totalSeconds % 60).toFixed(3);
+        let timeStr = padToTwo(hours) + ':' + padToTwo(minutes) + ':' + padToTwo(seconds);
         return timeStr;
     },
 
