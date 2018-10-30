@@ -174,6 +174,9 @@ WaveSurfer.util.extend(WaveSurfer.Drawer, {
             } else {
                 this.drawSpectrogram(buffer);
             }
+            // ODE finished loading
+            $('#audio-annotator-loader').addClass('undisplayed');
+            $('#audio-annotator').removeClass('undisplayed');
         } else {
             this.params.barWidth ?
                 this.drawBars(peaks) :
