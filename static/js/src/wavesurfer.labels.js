@@ -32,7 +32,7 @@ WaveSurfer.Labels = {
         this.labelsElement = null;
         this.labels = {};
         this.rowHeight = this.params.rowHeight || 20;
-        this.maxRows = this.params.maxRows || 6;
+        this.maxRows = this.params.maxRows || 4;
         this.height = this.params.height || (this.rowHeight * this.maxRows);
 
         // Create & append wrapper element to container
