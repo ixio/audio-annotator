@@ -339,7 +339,9 @@ AnnotationStages.prototype = {
         if (this.currentRegion) {
             this.currentRegion.update({drag: false, resize: false});
             $(this.currentRegion.element).removeClass('current_region');
+            $(this.currentRegion.element).addClass('deselected_region');
             $(this.currentRegion.annotationLabel.element).removeClass('current_label');
+            $(this.currentRegion.annotationLabel.element).addClass('deselected_label');
 
             // Remove the highlated label and disable.
             $('.annotation_tag', this.dom).removeClass('selected');

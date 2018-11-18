@@ -195,9 +195,19 @@
   border: 2px solid rgba(0, 177, 185, 0.85);
 }
 
+.deselected_region {
+  z-index: 5000 !important;
+  border: 2px solid black;
+}
+
 tag.current_label {
   z-index: 5000 !important;
   background-color: #00B1B9 !important;
+}
+
+tag.deselected_label {
+  z-index: 5000 !important;
+  background-color: black !important;
 }
 
 .hint {
